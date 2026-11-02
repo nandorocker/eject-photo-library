@@ -1,0 +1,28 @@
+name: Check
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test-and-build:
+    runs-on: macos-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Check shell syntax
+        run: |
+          /bin/zsh -n src/eject-photo-library.zsh
+          /bin/zsh -n workflow/alfred-list.zsh
+          /bin/zsh -n workflow/alfred-launcher.zsh
+      - name: Run safety tests
+        run: python3 tests/test_eject.py
+      - name: Build release files
+        run: python3 scripts/build.py
+      - name: Verify package
+        run: python3 tests/test_package.py

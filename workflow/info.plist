@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.nando.eject-photo-library</string>
+	<key>createdby</key>
+	<string>nando rossi</string>
+	<key>description</key>
+	<string>Safely eject mounted photo library images with ejp.</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Eject photo library</string>
+	<key>version</key>
+	<string>1.1.0</string>
+	<key>webaddress</key>
+	<string>https://nan.do</string>
+	<key>readme</key>
+	<string># Eject photo library
+
+Open Alfred, type **ejp**, and press Return. Choose an image if several match.
+
+Finds mounted disk images held open by Photos libraries. Tries a normal eject,
+then gracefully stops only known Apple background services holding the selected
+image open and retries. Other apps must be closed manually. No force eject,
+force kill, permanent indexing changes, or administrator password.
+
+Handles disk images and sparsebundles. Physical drives are outside this workflow.
+Normal results and notifications are generic; volume names appear only when
+needed to distinguish several matches.
+
+Created by [nando rossi](https://nan.do).
+[Buy me a coffee](https://buymeacoffee.com/nandorossi).
+
+Source: https://github.com/nandorocker/eject-photo-library
+</string>
+	<key>connections</key>
+	<dict>
+		<key>EF69D2BD-6F98-4753-920B-432ECCD8C3F9</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>AFCCC255-2AF3-48E1-80B7-1AB9E1C18B51</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>AFCCC255-2AF3-48E1-80B7-1AB9E1C18B51</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>6E9B8BE9-BB79-43C2-A2DE-9DBB5D0D0B3B</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>uid</key>
+			<string>EF69D2BD-6F98-4753-920B-432ECCD8C3F9</string>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>version</key>
+			<integer>3</integer>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>ejp</string>
+				<key>subtext</key>
+				<string>Safely eject a mounted photo library image</string>
+				<key>title</key>
+				<string>Eject photo library</string>
+				<key>withspace</key>
+				<false/>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string>alfred-list.zsh</string>
+				<key>type</key>
+				<integer>8</integer>
+				<key>queuedelaycustom</key>
+				<integer>1</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Finding mounted photo libraries…</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>uid</key>
+			<string>AFCCC255-2AF3-48E1-80B7-1AB9E1C18B51</string>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>version</key>
+			<integer>2</integer>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string>alfred-launcher.zsh</string>
+				<key>type</key>
+				<integer>8</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>uid</key>
+			<string>6E9B8BE9-BB79-43C2-A2DE-9DBB5D0D0B3B</string>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>version</key>
+			<integer>1</integer>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<true/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>Photo library</string>
+			</dict>
+		</dict>
+	</array>
+	<key>uidata</key>
+	<dict>
+		<key>EF69D2BD-6F98-4753-920B-432ECCD8C3F9</key>
+		<dict>
+			<key>xpos</key>
+			<integer>100</integer>
+			<key>ypos</key>
+			<integer>100</integer>
+		</dict>
+		<key>AFCCC255-2AF3-48E1-80B7-1AB9E1C18B51</key>
+		<dict>
+			<key>xpos</key>
+			<integer>400</integer>
+			<key>ypos</key>
+			<integer>100</integer>
+		</dict>
+		<key>6E9B8BE9-BB79-43C2-A2DE-9DBB5D0D0B3B</key>
+		<dict>
+			<key>xpos</key>
+			<integer>700</integer>
+			<key>ypos</key>
+			<integer>100</integer>
+		</dict>
+	</dict>
+</dict>
+</plist>
